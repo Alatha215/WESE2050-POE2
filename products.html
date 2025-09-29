@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Release Collection - Glossed & Glowing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Root palette and spacing */
+        :root {
+            --blush: #F8D7DA;
+            --champagne: #F7E9D7;
+            --soft-gold: #D6B26E;
+            --nude: #E7CFC4;
+            --accent: #C77A8D;
+            --muted: #6B5E5A;
+            --white: #ffffff;
+            --light-bg: #f9f6f4;
+            --max-width: 1200px;
+            --radius: 12px;
+            --spacer: 40px;
+        }
+
+        /* Reset and base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--muted);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            margin-right: 15px;
+        }
+
+        .site-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav a {
+            padding: 8px 16px;
+            font-weight: 600;
+            border-radius: 5px;
+        }
+
+        .nav a:hover {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--muted);
+            margin: 3px 0;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--blush) 0%, var(--nude) 100%);
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Collection Intro */
+        .collection-intro {
+            padding: var(--spacer) 0;
+            text-align: center;
+            background-color: var(--light-bg);
+        }
+
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .coming-soon {
+            background: var(--soft-gold);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 999px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        /* Products Grid */
+        .products-section {
+            padding: var(--spacer) 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .product-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .product-image {
+            height: 400px;
+            overflow: hidden;
+            background: var(--champagne);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-details {
+            padding: 2rem;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .product-finish {
+            display: inline-block;
+            background: var(--blush);
+            color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .product-features {
+            margin-bottom: 2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            color: var(--soft-gold);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--soft-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Buttons */
+        .cta-button {
+            background: var(--soft-gold);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 1rem;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+        .cta-button:hover {
+            background: var(--accent);
+        }
+
+        /* Values Section */
+        .values-section {
+            background: linear-gradient(135deg, var(--champagne) 0%, var(--blush) 100%);
+            padding: var(--spacer) 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--soft-gold);
+        }
+
+        .value-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .value-description {
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        /* Coming Soon */
+        .coming-soon-section {
+            padding: var(--spacer) 0;
+            text-align: center;
+            background-color: var(--light-bg);
+        }
+
+        .coming-soon-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .email-signup {
+            display: flex;
+            max-width: 400px;
+            margin: 2rem auto 0;
+            gap: 10px;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid var(--soft-gold);
+            border-radius: 999px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+
+        .notify-button {
+            background: var(--accent);
+            color: var(--white);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 999px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--muted);
+            color: var(--white);
+            padding: var(--spacer) 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--spacer);
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand .logo-container {
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            font-style: italic;
+            color: var(--champagne);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-column h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--champagne);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column a:hover {
+            color: var(--blush);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-image {
+                height: 300px;
+            }
+            
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav.active {
+                display: flex;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .values-grid,
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                gap: 1.5rem;
+            }
+            
+            .email-signup {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .page-header {
+                padding: 60px 0 30px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .product-name {
+                font-size: 1.7rem;
+            }
+            
+            .section {
+                padding: calc(var(--spacer) / 2) 0;
+            }
+            
+            .value-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="site-title">Seemah Gloss</div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="nav">
+                <a href="home.html">Home</a>
+                <a href="products.html" style="background-color: var(--accent); color: var(--white);">Shop</a>
+                <a href="about.html">About</a>
+                <a href="images.html">Blog</a>
+                <a href="contact_page.html">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Release Collection</h1>
+            <p class="page-subtitle">Introducing our first drop: four high-shine glosses crafted to hydrate, flatter, and glow up your vibe. Each shade is vegan, cruelty-free, and packed with nourishing ingredients for lips that feel as good as they look.</p>
+        </div>
+    </section>
+
+    <!-- Collection Intro -->
+    <section class="collection-intro">
+        <div class="container">
+            <p class="intro-text">Our debut collection features four carefully curated shades that celebrate individuality and self-expression. From everyday neutrals to bold statements, each gloss delivers intense hydration and brilliant shine without compromise.</p>
+            <div class="coming-soon">More shades dropping soon</div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Featured Glosses</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="_images/product_3.webp" alt="Champagne Glow">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Champagne Glow</h3>
+                        <div class="product-finish">Finish: Sheer with Golden Shimmer</div>
+                        <p class="product-description">The perfect everyday gloss that enhances your natural lip color while adding a touch of golden shimmer. This universally flattering shade provides a buildable wash of color that looks beautiful on all skin tones.</p>
+                        <div class="product-features">
+                            <ul class="feature-list">
+                                <li>Infused with hyaluronic acid for 12-hour hydration</li>
+                                <li>Non-sticky, comfortable wear</li>
+                                <li>Buildable from sheer to medium coverage</li>
+                                <li>Subtle golden micro-shimmer</li>
+                            </ul>
+                        </div>
+                        <div class="product-price">R45.00</div>
+                        <a href="#" class="cta-button">Add to Cart</a>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="_images/product_2.webp" alt="Berry Bliss">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Berry Bliss</h3>
+                        <div class="product-finish">Finish: Bold with High Shine</div>
+                        <p class="product-description">A vibrant berry shade that makes a statement while keeping lips hydrated and comfortable. This richly pigmented gloss delivers intense color payoff with a glass-like shine that doesn't feel heavy or sticky.</p>
+                        <div class="product-features">
+                            <ul class="feature-list">
+                                <li>Highly pigmented berry tone</li>
+                                <li>Vitamin E for antioxidant protection</li>
+                                <li>Glass-like shine without stickiness</li>
+                                <li>Long-wearing formula</li>
+                            </ul>
+                        </div>
+                        <div class="product-price">R45.00</div>
+                        <a href="#" class="cta-button">Add to Cart</a>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="_images/product_1.webp" alt="Nude Shimmer">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Nude Shimmer</h3>
+                        <div class="product-finish">Finish: Sheer with Pearl Finish</div>
+                        <p class="product-description">A sophisticated nude with delicate pearl shimmer that enhances your natural lip tone. This versatile shade works beautifully alone for a subtle glow or layered over lipstick to add dimension and shine.</p>
+                        <div class="product-features">
+                            <ul class="feature-list">
+                                <li>Pearlescent finish for multidimensional shine</li>
+                                <li>Jojoba oil for smooth application</li>
+                                <li>Flattering on all skin tones</li>
+                                <li>Perfect for layering</li>
+                            </ul>
+                        </div>
+                        <div class="product-price">R45.00</div>
+                        <a href="#" class="cta-button">Add to Cart</a>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="_images/product_4.webp" alt="Rose Quartz">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Rose Quartz</h3>
+                        <div class="product-finish">Finish: Glitter with Iridescent Particles</div>
+                        <p class="product-description">A dreamy pink gloss with iridescent glitter particles that catch the light beautifully. This playful yet sophisticated shade adds a touch of magic to any look, perfect for special occasions or when you want to feel extra glamorous.</p>
+                        <div class="product-features">
+                            <ul class="feature-list">
+                                <li>Iridescent glitter particles</li>
+                                <li>Moisturizing rosehip oil</li>
+                                <li>Comfortable glitter formula</li>
+                                <li>Buildable glitter intensity</li>
+                            </ul>
+                        </div>
+                        <div class="product-price">R45.00</div>
+                        <a href="#" class="cta-button">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">What Makes Our Gloss Special</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🌿</div>
+                    <h3 class="value-title">Clean Formula</h3>
+                    <p class="value-description">Our glosses are 100% vegan, cruelty-free, and made with nourishing botanical ingredients that care for your lips.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">💧</div>
+                    <h3 class="value-title">Intense Hydration</h3>
+                    <p class="value-description">Infused with hyaluronic acid and vitamin E for all-day moisture without the sticky feeling.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">✨</div>
+                    <h3 class="value-title">Brilliant Shine</h3>
+                    <p class="value-description">Professional-quality gloss that delivers high-impact shine without feeling heavy or tacky on the lips.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon -->
+    <section class="coming-soon-section">
+        <div class="container">
+            <div class="coming-soon-content">
+                <h2 class="section-title">More Shades Coming Soon</h2>
+                <p>We're working on expanding our collection with new exciting shades and finishes. Be the first to know when we drop new products!</p>
+                <form class="email-signup">
+                    <input type="email" placeholder="Enter your email" class="email-input" required>
+                    <button type="submit" class="notify-button">Notify Me</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-container">
+                        <div class="site-title">Seemah Gloss</div>
+                    </div>
+                    <p class="footer-tagline">Where Shine Meets Power</p>
+                </div>
+                
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://instagram.com">Instagram</a></li>
+                            <li><a href="https://tiktok.com">TikTok</a></li>
+                            <li><a href="https://pinterest.com">Pinterest</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seemah Gloss. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.nav');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

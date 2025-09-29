@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seemah Gloss - Where Shine Meets Power</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Root palette and spacing */
+        :root {
+            --blush: #F8D7DA;
+            --champagne: #F7E9D7;
+            --soft-gold: #D6B26E;
+            --nude: #E7CFC4;
+            --accent: #C77A8D;
+            --muted: #6B5E5A;
+            --white: #ffffff;
+            --light-bg: #f9f6f4;
+            --max-width: 1200px;
+            --radius: 12px;
+            --spacer: 40px;
+        }
+
+        /* Reset and base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--muted);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            margin-right: 15px;
+            border-radius: 50%;
+        }
+
+        .site-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav a {
+            padding: 8px 16px;
+            font-weight: 600;
+            border-radius: 5px;
+        }
+
+        .nav a:hover {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--muted);
+            margin: 3px 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            margin-bottom: var(--spacer);
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(199, 122, 141, 0.6);
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .hero-tagline {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        /* Buttons */
+        .cta-button {
+            background: var(--soft-gold);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--accent);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        /* Sections */
+        .section {
+            padding: var(--spacer) 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--soft-gold);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Who We Are Section */
+        .who-we-are {
+            background-color: var(--light-bg);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacer);
+            align-items: center;
+        }
+
+        .content-image img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .content-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* Mission Section */
+        .mission {
+            text-align: center;
+        }
+
+        .mission-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .mission-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Values Section */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .value-description {
+            line-height: 1.6;
+        }
+
+        /* Founder Section */
+        .founder {
+            background-color: var(--champagne);
+        }
+
+        .founder-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--spacer);
+            align-items: center;
+        }
+
+        .founder-image img {
+            width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .founder-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .founder-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--muted);
+            font-style: italic;
+            border-left: 4px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        /* Products Preview */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--accent);
+            padding: 1rem 1.5rem 0.5rem;
+        }
+
+        .product-description {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--muted);
+        }
+
+        .section-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--blush) 0%, var(--nude) 100%);
+            text-align: center;
+            padding: calc(var(--spacer) * 1.5) 0;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--muted);
+            color: var(--white);
+            padding: var(--spacer) 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--spacer);
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand .logo-container {
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            font-style: italic;
+            color: var(--champagne);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-column h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--champagne);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column a:hover {
+            color: var(--blush);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-brand {
+                font-size: 3rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.5rem;
+            }
+            
+            .content-grid,
+            .founder-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .values-grid,
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav.active {
+                display: flex;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .hero {
+                height: 60vh;
+                min-height: 400px;
+            }
+            
+            .hero-brand {
+                font-size: 2.5rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .values-grid,
+            .products-grid,
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero-brand {
+                font-size: 2rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+            
+            .cta-button {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: calc(var(--spacer) / 2) 0;
+            }
+            
+            .value-card,
+            .product-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Glossed & Glowing logo" class="logo">
+                <div class="site-title">Seemah Gloss</div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="nav">
+                <a href="home.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="images.html">Blog</a>
+                <a href>About</a>
+                <a href="contact_page.html">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-image">
+            <img src="_images/heroimage.jpg" alt="Confident model wearing gloss" />
+        </div>
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-brand">Seemah Gloss</h1>
+                    <p class="hero-tagline">Where Shine Meets Power</p>
+                    <a href="products.html" class="cta-button">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Who We Are Section -->
+        <section class="section who-we-are">
+            <div class="container">
+                <h2 class="section-title">Who We Are</h2>
+                <div class="content-grid">
+                    <div class="content-image">
+                        <img src="_images/lipglosses.webp" alt="Our story">
+                    </div>
+                    <div class="content-text">
+                        <p>
+                            <span class="highlight">Seemah Gloss</span> was born out of our desire to create a lip gloss brand that truly reflects the beauty and diversity of modern beauty culture.
+                            We wanted to create formulas that are not only deliciously smooth and moisturizing but also cruelty-free, vegan-friendly and made with love.
+                        </p>
+                        <p>
+                            From our signature shade "Champagne Glow", to our limited-edition collaborations with beauty influencers, every aspect of Seemah Gloss is created to celebrate the beauty of self-expression.
+                            Whether you're a lip gloss fanatic or just starting to explore the endless world of makeup, we would love to invite you to join our Seemah Gloss family.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="section mission">
+            <div class="container">
+                <h2 class="section-title">Our Mission</h2>
+                <div class="mission-content">
+                    <p>
+                        Empowering people to express themselves through the power of lip gloss because we at <span class="highlight">Seemah Gloss</span> believe that a swipe of our product can boost confidence, ignite creativity and bring people together.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="section values">
+            <div class="container">
+                <h2 class="section-title">Our Values</h2>
+                <h3 class="section-subtitle">Here at Seemah Gloss</h3>
+                
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">💖</div>
+                        <h4 class="value-title">Empowering Self-Expression</h4>
+                        <p class="value-description">We believe that beauty is a form of self-expression, and our lip glosses are designed to help you unleash your unique style.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">👥</div>
+                        <h4 class="value-title">Community Building</h4>
+                        <p class="value-description">We are very passionate about building a community that celebrates diversity, inclusivity and kindness.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">🌿</div>
+                        <h4 class="value-title">Sustainable Practices</h4>
+                        <p class="value-description">We at Seemah Gloss are dedicated to reducing our environmental footprint and promoting eco-friendly packaging.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Founder Section -->
+        <section class="section founder">
+            <div class="container">
+                <h2 class="section-title">Founder of Seemah Gloss</h2>
+                <div class="founder-content">
+                    <div class="founder-image">
+                        <img src="_images/seemah_owner.webp" alt="Picture of our founder">
+                    </div>
+                    <div class="founder-text">
+                        <p>Our founder, Seemah was inspired by a passion for inclusivity and quality, crafted each product with care to empower and shine unapologetically. With years of experience in the beauty industry, she envisioned a brand that celebrates every shade of beauty and creates lip glosses that feel like skincare.</p>
+                        <blockquote class="founder-quote">
+                            "Lip gloss isn't just makeup—it's a mood. It's that final touch that completes your look and boosts your confidence."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Preview -->
+        <section class="section products-preview">
+            <div class="container">
+                <h2 class="section-title">Our Signature Collection</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                           <center><img src="_images/product.webp" alt="Lipglosses"></center>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="section final-cta">
+            <div class="container">
+                <h2 class="cta-title">Ready to Glow?</h2>
+                <p class="cta-subtitle">Join our community and discover your perfect shine</p>
+                <a href="products.html" class="cta-button">Shop the Collection</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-container">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Glossed & Glowing logo" class="logo">
+                        <div class="site-title">Seemah Gloss</div>
+                    </div>
+                    <p class="footer-tagline">Where Shine Meets Power</p>
+                </div>
+                
+                    
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://instagram.com">Instagram</a></li>
+                            <li><a href="https://tiktok.com">TikTok</a></li>
+                            <li><a href="https://pinterest.com">Pinterest</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seemah Gloss. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.nav');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
