@@ -3,568 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seemah Gloss - Where Shine Meets Power</title>
+    <title>About Us - Seemah Gloss | Where Shine Meets Power</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* Root palette and spacing */
-        :root {
-            --blush: #F8D7DA;
-            --champagne: #F7E9D7;
-            --soft-gold: #D6B26E;
-            --nude: #E7CFC4;
-            --accent: #C77A8D;
-            --muted: #6B5E5A;
-            --white: #ffffff;
-            --light-bg: #f9f6f4;
-            --max-width: 1200px;
-            --radius: 12px;
-            --spacer: 40px;
+        .story-section {
+            padding: var(--spacing-xl) 0;
         }
 
-        /* Reset and base */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--muted);
-            background: var(--white);
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        .header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo {
-            height: 50px;
-            width: auto;
-            margin-right: 15px;
-            border-radius: 50%;
-        }
-
-        .site-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--accent);
-        }
-
-        /* Navigation */
-        .nav {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav a {
-            padding: 8px 16px;
-            font-weight: 600;
-            border-radius: 5px;
-        }
-
-        .nav a:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background-color: var(--muted);
-            margin: 3px 0;
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 70vh;
-            min-height: 500px;
-            margin-bottom: var(--spacer);
-            overflow: hidden;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(199, 122, 141, 0.6);
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-content {
-            text-align: center;
-            color: var(--white);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero-brand {
-            font-family: 'Playfair Display', serif;
-            font-weight: 900;
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-        }
-
-        .hero-tagline {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-        }
-
-        /* Buttons */
-        .cta-button {
-            background: var(--soft-gold);
-            color: var(--white);
-            padding: 1rem 2.5rem;
-            border-radius: 999px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            display: inline-block;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            background: var(--accent);
-        }
-
-        .cta-button.secondary {
-            background: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
-        }
-
-        .cta-button.secondary:hover {
-            background: var(--accent);
-            color: var(--white);
-        }
-
-        /* Sections */
-        .section {
-            padding: var(--spacer) 0;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--accent);
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .section-subtitle {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--soft-gold);
-            text-align: center;
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
-
-        .highlight {
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        /* Who We Are Section */
-        .who-we-are {
-            background-color: var(--light-bg);
-        }
-
-        .content-grid {
+        .story-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--spacer);
+            gap: var(--spacing-lg);
             align-items: center;
         }
 
-        .content-image img {
+        .story-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .story-image img {
             width: 100%;
-            border-radius: var(--radius);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 400px;
+            object-fit: cover;
+            transition: var(--transition);
         }
 
-        .content-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.7;
+        .story-image:hover img {
+            transform: scale(1.05);
         }
 
-        /* Mission Section */
-        .mission {
+        .signature {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .signature img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .values-section {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--light);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .value-card {
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
             text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .team-section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .team-member {
+            text-align: center;
+            padding: var(--spacing-md);
+        }
+
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: var(--spacing-sm);
+            border: 3px solid var(--primary);
+        }
+
+        .team-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stats-section {
+            padding: var(--spacing-xl) 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .stat-item {
+            padding: var(--spacing-md);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .mission-section {
+            padding: var(--spacing-xl) 0;
         }
 
         .mission-content {
             max-width: 800px;
             margin: 0 auto;
-        }
-
-        .mission-content p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-        }
-
-        /* Values Section */
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .value-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             text-align: center;
         }
 
-        .value-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .value-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .value-description {
-            line-height: 1.6;
-        }
-
-        /* Founder Section */
-        .founder {
-            background-color: var(--champagne);
-        }
-
-        .founder-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: var(--spacer);
-            align-items: center;
-        }
-
-        .founder-image img {
-            width: 100%;
-            border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .founder-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        .founder-quote {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: var(--muted);
-            font-style: italic;
-            border-left: 4px solid var(--accent);
-            padding-left: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        /* Products Preview */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .product-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .product-image {
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .product-name {
-            font-family: 'Playfair Display', serif;
+        .mission-statement {
             font-size: 1.3rem;
-            color: var(--accent);
-            padding: 1rem 1.5rem 0.5rem;
-        }
-
-        .product-description {
-            padding: 0 1.5rem 1.5rem;
+            line-height: 1.8;
             color: var(--muted);
-        }
-
-        .section-cta {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        /* Final CTA */
-        .final-cta {
-            background: linear-gradient(135deg, var(--blush) 0%, var(--nude) 100%);
-            text-align: center;
-            padding: calc(var(--spacer) * 1.5) 0;
-        }
-
-        .cta-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .cta-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--muted);
-            color: var(--white);
-            padding: var(--spacer) 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: var(--spacer);
-            margin-bottom: 2rem;
-        }
-
-        .footer-brand .logo-container {
-            margin-bottom: 1rem;
-        }
-
-        .footer-tagline {
+            margin-bottom: var(--spacing-lg);
             font-style: italic;
-            color: var(--champagne);
-        }
-
-        .footer-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .footer-column h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--champagne);
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-column a:hover {
-            color: var(--blush);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-brand {
-                font-size: 3rem;
-            }
-            
-            .hero-tagline {
-                font-size: 1.5rem;
-            }
-            
-            .content-grid,
-            .founder-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .values-grid,
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 768px) {
-            .nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: var(--white);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-            }
-            
-            .nav.active {
-                display: flex;
-            }
-            
-            .mobile-menu-toggle {
-                display: flex;
-            }
-            
-            .hero {
-                height: 60vh;
-                min-height: 400px;
-            }
-            
-            .hero-brand {
-                font-size: 2.5rem;
-            }
-            
-            .hero-tagline {
-                font-size: 1.3rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .values-grid,
-            .products-grid,
-            .footer-links {
+            .story-grid {
                 grid-template-columns: 1fr;
             }
             
-            .footer-links {
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                padding: 0 15px;
+            .story-image {
+                order: -1;
             }
             
-            .hero-brand {
-                font-size: 2rem;
-            }
-            
-            .hero-tagline {
-                font-size: 1.1rem;
-            }
-            
-            .cta-button {
-                padding: 0.8rem 1.8rem;
-                font-size: 1rem;
-            }
-            
-            .section {
-                padding: calc(var(--spacer) / 2) 0;
-            }
-            
-            .value-card,
-            .product-card {
-                padding: 1.5rem;
+            .values-grid,
+            .team-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
     <header class="header">
         <div class="container">
             <div class="logo-container">
-                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Glossed & Glowing logo" class="logo">
                 <div class="site-title">Seemah Gloss</div>
             </div>
 
-            <!-- Navigation -->
             <nav class="nav">
                 <a href="home.html">Home</a>
                 <a href="products.html">Shop</a>
+                <a href="about.html" class="active">About</a>
                 <a href="images.html">Blog</a>
-                <a href>About</a>
-                <a href="contact_page.html">Contact</a>
+                <a href="contact_page.html">Contact Us</a>
+                 <a href="enquiry.html">Enquiries</a>
             </nav>
 
-            <!-- Mobile Menu Toggle -->
             <div class="mobile-menu-toggle">
                 <span></span>
                 <span></span>
@@ -573,149 +203,216 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-image">
-            <img src="_images/heroimage.jpg" alt="Confident model wearing gloss" />
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Our Story</h1>
+            <p class="page-subtitle">Where shine meets power - Discover the journey behind South Africa's premier cruelty-free beauty brand</p>
         </div>
-        <div class="hero-overlay">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-brand">Seemah Gloss</h1>
-                    <p class="hero-tagline">Where Shine Meets Power</p>
-                    <a href="products.html" class="cta-button">Shop Now</a>
+    </section>
+
+
+    <section class="story-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <h2>From Passion to Purpose</h2>
+                    <p>Founded in 2020 by Sarah Johnson, Seemah Gloss began as a passion project in a small Johannesburg apartment. Frustrated by the lack of high-quality, cruelty-free lip products in the South African market, Sarah started experimenting with natural ingredients and sustainable formulations.</p>
+                    
+                    <p>What started as homemade lip balms for friends and family quickly grew into a movement. Today, we're proud to be one of South Africa's leading cruelty-free beauty brands, serving customers across the globe who believe that beauty shouldn't come at the expense of our values.</p>
+                    
+                    <p>Every product we create is infused with our commitment to quality, sustainability, and empowerment. We believe that when you feel good about what you put on your lips, you shine with confidence from within.</p>
+                    
+                    <div class="signature">
+                        <img src="_images/seemah_owner.webp" 
+                             alt="Sarah Johnson - Founder of Seemah Gloss">
+                        <div>
+                            <strong>Sarah Johnson</strong>
+                            <p>Founder & CEO</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-image">
+                    <img src="_images/bts_pic1.webp" 
+                         alt="Seemah Gloss founder creating products in the lab">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Who We Are Section -->
-        <section class="section who-we-are">
-            <div class="container">
-                <h2 class="section-title">Who We Are</h2>
-                <div class="content-grid">
-                    <div class="content-image">
-                        <img src="_images/lipglosses.webp" alt="Our story">
-                    </div>
-                    <div class="content-text">
-                        <p>
-                            <span class="highlight">Seemah Gloss</span> was born out of our desire to create a lip gloss brand that truly reflects the beauty and diversity of modern beauty culture.
-                            We wanted to create formulas that are not only deliciously smooth and moisturizing but also cruelty-free, vegan-friendly and made with love.
-                        </p>
-                        <p>
-                            From our signature shade "Champagne Glow", to our limited-edition collaborations with beauty influencers, every aspect of Seemah Gloss is created to celebrate the beauty of self-expression.
-                            Whether you're a lip gloss fanatic or just starting to explore the endless world of makeup, we would love to invite you to join our Seemah Gloss family.
-                        </p>
-                    </div>
-                </div>
+    
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-content">
+                <h2>Our Mission</h2>
+                <p class="mission-statement">"To create premium, cruelty-free beauty products that empower confidence, celebrate individuality, and make a positive impact on our world."</p>
+                <p>We're committed to proving that luxury beauty can be ethical, sustainable, and accessible to everyone. Through innovative formulations, responsible sourcing, and community engagement, we're redefining what it means to be beautiful.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Mission Section -->
-        <section class="section mission">
-            <div class="container">
-                <h2 class="section-title">Our Mission</h2>
-                <div class="mission-content">
-                    <p>
-                        Empowering people to express themselves through the power of lip gloss because we at <span class="highlight">Seemah Gloss</span> believe that a swipe of our product can boost confidence, ignite creativity and bring people together.
-                    </p>
+    <section class="values-section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: var(--spacing-lg);">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>We're committed to reducing our environmental footprint through eco-friendly packaging, responsible sourcing, and carbon-neutral shipping.</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Values Section -->
-        <section class="section values">
-            <div class="container">
-                <h2 class="section-title">Our Values</h2>
-                <h3 class="section-subtitle">Here at Seemah Gloss</h3>
                 
-                <div class="values-grid">
-                    <div class="value-card">
-                        <div class="value-icon">💖</div>
-                        <h4 class="value-title">Empowering Self-Expression</h4>
-                        <p class="value-description">We believe that beauty is a form of self-expression, and our lip glosses are designed to help you unleash your unique style.</p>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
                     </div>
-                    
-                    <div class="value-card">
-                        <div class="value-icon">👥</div>
-                        <h4 class="value-title">Community Building</h4>
-                        <p class="value-description">We are very passionate about building a community that celebrates diversity, inclusivity and kindness.</p>
+                    <h3>Cruelty-Free</h3>
+                    <p>All our products are 100% cruelty-free and vegan. We never test on animals and are certified by Leaping Bunny and Vegan Action.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
                     </div>
-                    
-                    <div class="value-card">
-                        <div class="value-icon">🌿</div>
-                        <h4 class="value-title">Sustainable Practices</h4>
-                        <p class="value-description">We at Seemah Gloss are dedicated to reducing our environmental footprint and promoting eco-friendly packaging.</p>
+                    <h3>Inclusivity</h3>
+                    <p>Beauty comes in all shades. Our products are designed to celebrate diversity and make everyone feel seen and beautiful.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-gem"></i>
                     </div>
+                    <h3>Quality</h3>
+                    <p>We use only the finest ingredients and rigorous testing to ensure every product meets our high standards of excellence.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Founder Section -->
-        <section class="section founder">
-            <div class="container">
-                <h2 class="section-title">Founder of Seemah Gloss</h2>
-                <div class="founder-content">
-                    <div class="founder-image">
-                        <img src="_images/seemah_owner.webp" alt="Picture of our founder">
-                    </div>
-                    <div class="founder-text">
-                        <p>Our founder, Seemah was inspired by a passion for inclusivity and quality, crafted each product with care to empower and shine unapologetically. With years of experience in the beauty industry, she envisioned a brand that celebrates every shade of beauty and creates lip glosses that feel like skincare.</p>
-                        <blockquote class="founder-quote">
-                            "Lip gloss isn't just makeup—it's a mood. It's that final touch that completes your look and boosts your confidence."
-                        </blockquote>
-                    </div>
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <h2>Our Impact</h2>
+            <p class="page-subtitle" style="color: rgba(255,255,255,0.9);">Making a difference, one lip gloss at a time</p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">50,000+</div>
+                    <div class="stat-label">Products Sold</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Countries Reached</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Cruelty-Free</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">15,000+</div>
+                    <div class="stat-label">Trees Planted</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Products Preview -->
-        <section class="section products-preview">
-            <div class="container">
-                <h2 class="section-title">Our Signature Collection</h2>
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-image">
-                           <center><img src="_images/product.webp" alt="Lipglosses"></center>
-        </section>
-
-        <!-- Final CTA -->
-        <section class="section final-cta">
-            <div class="container">
-                <h2 class="cta-title">Ready to Glow?</h2>
-                <p class="cta-subtitle">Join our community and discover your perfect shine</p>
-                <a href="products.html" class="cta-button">Shop the Collection</a>
+    <section class="team-section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: var(--spacing-lg);">Meet Our Team</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto var(--spacing-lg); color: var(--muted);">
+                The passionate individuals behind Seemah Gloss who work tirelessly to bring you the best in ethical beauty.
+            </p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="_images/seemah_owner2.webp" 
+                         alt="Seemah Founder & CEO" 
+                         class="team-photo">
+                    <h3>Seemah Mangolwane</h3>
+                    <p class="team-role">Founder & CEO</p>
+                    <p>With a background in cosmetic science and a passion for ethical beauty, Seemah leads our vision and product development.</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="_images/yanda.webp" 
+                         alt="Yanda Woods- Head of Product Development" 
+                         class="team-photo">
+                    <h3>Yanda Woods</h3>
+                    <p class="team-role">Head of Product Development</p>
+                    <p>Yanda brings 10 years of experience in cosmetic formulation and ensures every product meets our quality standards.</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="_images/zille.webp" 
+                         alt="Zille Kwishisha - Marketing Director" 
+                         class="team-photo">
+                    <h3>Zille Kwishisha</h3>
+                    <p class="team-role">Marketing Director</p>
+                    <p>Zille leads our digital strategy and brand partnerships, spreading the message of ethical beauty worldwide.</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="_images/cyan.webp" 
+                         alt="Cyan Zuma - Sustainability Manager" 
+                         class="team-photo">
+                    <h3>Cyan Zuma</h3>
+                    <p class="team-role">Sustainability Manager</p>
+                    <p>Cyan ensures we meet our environmental goals and leads our community outreach programs.</p>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!-- Footer -->
+
+    <section class="page-header" style="background: linear-gradient(135deg, var(--secondary) 0%, var(--primary-light) 100%);">
+        <div class="container">
+            <h2 class="page-title">Join Our Beauty Revolution</h2>
+            <p class="page-subtitle">Experience the difference of ethical, high-performance beauty products</p>
+            <div style="margin-top: var(--spacing-md);">
+                <a href="products.html" class="form-submit" style="margin-right: var(--spacing-sm); text-decoration: none;">
+                    Shop Our Products
+                </a>
+                <a href="contact.html" class="form-submit" style="background: transparent; border: 2px solid var(--primary); color: var(--primary); text-decoration: none;">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="logo-container">
-                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Glossed & Glowing logo" class="logo">
                         <div class="site-title">Seemah Gloss</div>
                     </div>
                     <p class="footer-tagline">Where Shine Meets Power</p>
                 </div>
-                
-                    
-                    <div class="footer-column">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://instagram.com">Instagram</a></li>
-                            <li><a href="https://tiktok.com">TikTok</a></li>
-                            <li><a href="https://pinterest.com">Pinterest</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                        </ul>
-                    </div>
+               
+                 <nav class="nav">
+                <a href="home.html" class="active">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="about.html">About</a>
+                <a href="images.html">Blog</a>
+                <a href="contact_page.html">Contact Us</a>
+                <a href="enquiry.html">Enquiries</a>
+            </nav>
+            
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://instagram.com">Instagram</a></li>
+                        <li><a href="https://tiktok.com">TikTok</a></li>
+                        <li><a href="https://pinterest.com">Pinterest</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
                 </div>
             </div>
-            
+           
             <div class="footer-bottom">
                 <p>&copy; 2025 Seemah Gloss. All rights reserved.</p>
             </div>
@@ -723,16 +420,48 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
             const nav = document.querySelector('.nav');
-            
+           
             if (mobileMenuToggle) {
                 mobileMenuToggle.addEventListener('click', function() {
                     nav.classList.toggle('active');
                 });
             }
+
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const stat = entry.target;
+                        const target = parseInt(stat.textContent.replace('+', ''));
+                        let current = 0;
+                        const increment = target / 50;
+                        
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                stat.textContent = target.toLocaleString() + (stat.textContent.includes('+') ? '+' : '');
+                                clearInterval(timer);
+                            } else {
+                                stat.textContent = Math.floor(current).toLocaleString();
+                            }
+                        }, 30);
+                        
+                        observer.unobserve(stat);
+                    }
+                });
+            }, observerOptions);
+
+            statNumbers.forEach(stat => {
+                observer.observe(stat);
+            });
         });
     </script>
 </body>

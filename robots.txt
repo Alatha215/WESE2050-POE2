@@ -1,0 +1,39 @@
+# robots.txt for Seemah Gloss
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://seemahgloss.com/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /includes/
+Disallow: /config/
+Disallow: /backup/
+
+# Allow search engines to index important files
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.webp$
+
+# Disallow parameters that create duplicate content
+Disallow: /*?sort=
+Disallow: /*?filter=
+Disallow: /*?page=
+Disallow: /*?session=
+Disallow: /*?token=
+
+# Allow social media bots
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: FacebookExternalHit
+Allow: /

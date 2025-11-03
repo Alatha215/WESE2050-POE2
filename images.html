@@ -3,643 +3,412 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Seemah Gloss</title>
+    <title>Beauty Blog - Seemah Gloss | Tips, Trends & Cruelty-Free Beauty</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* Root palette and spacing */
-        :root {
-            --blush: #F8D7DA;
-            --champagne: #F7E9D7;
-            --soft-gold: #D6B26E;
-            --nude: #E7CFC4;
-            --accent: #C77A8D;
-            --muted: #6B5E5A;
-            --white: #ffffff;
-            --light-bg: #f9f6f4;
-            --max-width: 1400px;
-            --radius: 12px;
-            --spacer: 40px;
+        /* Blog page specific styles */
+        .blog-hero {
+            background: linear-gradient(135deg, var(--light) 0%, var(--secondary) 100%);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
         }
 
-        /* Reset and base */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        .blog-hero h1 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
         }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--muted);
-            background: var(--white);
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-        }
-
-        .container {
-            max-width: var(--max-width);
+        .blog-hero p {
+            max-width: 600px;
             margin: 0 auto;
-            padding: 0 20px;
+            color: var(--dark);
+            font-size: 1.2rem;
         }
 
-        /* Header */
-        .header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        .blog-section {
+            padding: var(--spacing-xl) 0;
         }
 
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo {
-            height: 50px;
-            width: auto;
-            margin-right: 15px;
-        }
-
-        .site-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--accent);
-        }
-
-        /* Navigation */
-        .nav {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav a {
-            padding: 8px 16px;
-            font-weight: 600;
-            border-radius: 5px;
-        }
-
-        .nav a:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background-color: var(--muted);
-            margin: 3px 0;
-            transition: all 0.3s ease;
-        }
-
-        /* Hero Section */
-        .gallery-hero {
-            position: relative;
-            height: 70vh;
-            min-height: 600px;
-            overflow: hidden;
-            margin-bottom: var(--spacer);
-        }
-
-        .hero-collage {
+        .blog-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 10px;
-            height: 100%;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: start;
         }
 
-        .collage-item {
+        .blog-posts {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .blog-post {
+            background: white;
+            border-radius: var(--border-radius);
             overflow: hidden;
-            position: relative;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
         }
 
-        .collage-item img {
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .post-image {
             width: 100%;
-            height: 100%;
+            height: 250px;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: var(--transition);
         }
 
-        .collage-item:hover img {
+        .blog-post:hover .post-image {
             transform: scale(1.05);
         }
 
-        .collage-item:nth-child(1) {
-            grid-column: 1 / 3;
-            grid-row: 1 / 2;
+        .post-content {
+            padding: var(--spacing-md);
         }
 
-        .collage-item:nth-child(2) {
-            grid-column: 3 / 4;
-            grid-row: 1 / 3;
+        .post-category {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
         }
 
-        .collage-item:nth-child(3) {
-            grid-column: 1 / 2;
-            grid-row: 2 / 3;
+        .post-title {
+            font-size: 1.3rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--dark);
+            line-height: 1.3;
         }
 
-        .collage-item:nth-child(4) {
-            grid-column: 2 / 3;
-            grid-row: 2 / 3;
+        .post-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
         }
 
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(199, 122, 141, 0.15);
+        .post-title a:hover {
+            color: var(--primary);
+        }
+
+        .post-excerpt {
+            color: var(--muted);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            color: var(--muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #f0f0f0;
+            padding-top: var(--spacing-sm);
+        }
+
+        .post-meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            margin-top: var(--spacing-sm);
+        }
+
+        .read-more:hover {
+            color: var(--primary-dark);
+            transform: translateX(5px);
+        }
+
+        /* Sidebar */
+        .blog-sidebar {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding: var(--spacer);
+            gap: var(--spacing-lg);
         }
 
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-weight: 900;
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        .sidebar-widget {
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
         }
 
-        .hero-subtitle {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-cta {
-            background: var(--soft-gold);
-            color: var(--white);
-            padding: 1rem 2.5rem;
-            border-radius: 999px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .hero-cta:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        /* Featured Looks Section */
-        .featured-looks {
-            padding: var(--spacer) 0;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--accent);
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .looks-slider {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .slider-container {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .slide {
-            min-width: 100%;
-            position: relative;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 600px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .slide-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
-            color: var(--white);
-            padding: 2rem;
-        }
-
-        .slide-info {
-            max-width: 500px;
-        }
-
-        .shade-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .finish-type {
-            display: inline-block;
-            background: var(--soft-gold);
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .shop-shade {
-            background: var(--white);
-            color: var(--accent);
-            padding: 0.8rem 1.5rem;
-            border-radius: 999px;
-            font-weight: 700;
-            display: inline-block;
-        }
-
-        .shop-shade:hover {
-            background: var(--champagne);
-            transform: translateY(-2px);
-        }
-
-        .slider-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--nude);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .slider-dot.active {
-            background: var(--accent);
-            transform: scale(1.2);
-        }
-
-        /* Behind the Scenes */
-        .behind-scenes {
-            padding: var(--spacer) 0;
-            background: var(--light-bg);
-        }
-
-        .bts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .bts-card {
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            background: var(--white);
-        }
-
-        .bts-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-
-        .bts-image {
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .bts-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .bts-card:hover .bts-image img {
-            transform: scale(1.1);
-        }
-
-        .bts-caption {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .bts-caption h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        /* CTA Banner */
-        .cta-banner {
-            padding: calc(var(--spacer) * 1.5) 0;
-            background: linear-gradient(135deg, 
-                rgba(214, 178, 110, 0.1) 0%, 
-                rgba(199, 122, 141, 0.1) 50%, 
-                rgba(247, 233, 215, 0.1) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-banner::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="glimmer" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23D6B26E" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23glimmer)"/></svg>');
-            opacity: 0.5;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .cta-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .cta-subtitle {
+        .widget-title {
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 2px solid var(--light);
             font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: var(--muted);
         }
 
-        .cta-button {
-            background: var(--accent);
-            color: var(--white);
-            padding: 1rem 2.5rem;
-            border-radius: 999px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(199, 122, 141, 0.3);
-        }
-
-        .cta-button:hover {
-            background: var(--soft-gold);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(214, 178, 110, 0.4);
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--muted);
-            color: var(--white);
-            padding: var(--spacer) 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: var(--spacer);
-            margin-bottom: 2rem;
-        }
-
-        .footer-brand .logo-container {
-            margin-bottom: 1rem;
-        }
-
-        .footer-tagline {
-            font-style: italic;
-            color: var(--champagne);
-        }
-
-        .footer-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .footer-column h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--champagne);
-        }
-
-        .footer-column ul {
+        .categories-list {
             list-style: none;
         }
 
-        .footer-column li {
-            margin-bottom: 0.5rem;
+        .categories-list li {
+            margin-bottom: var(--spacing-sm);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid #f5f5f5;
         }
 
-        .footer-column a:hover {
-            color: var(--blush);
+        .categories-list a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .footer-bottom {
+        .categories-list a:hover {
+            color: var(--primary);
+        }
+
+        .category-count {
+            background: var(--light);
+            color: var(--muted);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+
+        .recent-posts {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .recent-post {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: flex-start;
+        }
+
+        .recent-post-image {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+        }
+
+        .recent-post-content h4 {
+            margin-bottom: 4px;
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
+
+        .recent-post-content h4 a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .recent-post-content h4 a:hover {
+            color: var(--primary);
+        }
+
+        .recent-post-date {
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+        }
+
+        .tag {
+            background: var(--light);
+            color: var(--dark);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .newsletter-widget {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        .social-tag {
-            background: var(--soft-gold);
-            color: var(--white);
-            padding: 8px 16px;
-            border-radius: 999px;
+        .newsletter-widget .widget-title {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-sm);
+            font-family: var(--font-body);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.3);
+        }
+
+        .btn-newsletter {
+            width: 100%;
+            background: var(--secondary);
+            color: var(--dark);
+            border: none;
+            padding: 12px;
+            border-radius: var(--border-radius);
             font-weight: 600;
-            display: inline-block;
-            margin-top: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-collage {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: repeat(3, 1fr);
-            }
+        .btn-newsletter:hover {
+            background: var(--secondary-dark);
+            transform: translateY(-2px);
+        }
 
-            .collage-item:nth-child(1) {
-                grid-column: 1 / 2;
-                grid-row: 1 / 2;
-            }
+        /* Featured Post */
+        .featured-post {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            grid-column: 1 / -1;
+            margin-bottom: var(--spacing-lg);
+        }
 
-            .collage-item:nth-child(2) {
-                grid-column: 2 / 3;
-                grid-row: 1 / 3;
-            }
+        .featured-post .post-image {
+            height: 350px;
+        }
 
-            .collage-item:nth-child(3) {
-                grid-column: 1 / 2;
-                grid-row: 2 / 3;
-            }
+        .featured-content {
+            padding: var(--spacing-lg);
+        }
 
-            .collage-item:nth-child(4) {
-                grid-column: 1 / 3;
-                grid-row: 3 / 4;
-            }
+        .featured-content .post-category {
+            background: var(--primary);
+            color: white;
+        }
 
-            .slide img {
-                height: 500px;
-            }
+        .featured-content .post-title {
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-sm);
+        }
 
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
+        .featured-content .post-excerpt {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Pagination */
+        .blog-pagination {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .pagination-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            border-radius: var(--border-radius);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .pagination-link:hover,
+        .pagination-link.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .pagination-link.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-link.disabled:hover {
+            background: transparent;
+            color: var(--primary);
         }
 
         @media (max-width: 768px) {
-            .nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: var(--white);
+            .blog-container {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+            
+            .featured-post {
+                grid-column: 1;
+            }
+            
+            .post-meta {
                 flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                align-items: flex-start;
+                gap: var(--spacing-xs);
             }
-
-            .nav.active {
-                display: flex;
-            }
-
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            .gallery-hero {
-                height: 60vh;
-                min-height: 500px;
-            }
-
-            .hero-title {
-                font-size: 2.8rem;
-            }
-
-            .hero-subtitle {
+            
+            .featured-content .post-title {
                 font-size: 1.4rem;
             }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .slide img {
-                height: 400px;
-            }
-
-            .bts-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-links {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            .gallery-hero {
-                height: 50vh;
-                min-height: 400px;
-            }
-
-            .hero-collage {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(4, 1fr);
-            }
-
-            .collage-item:nth-child(1),
-            .collage-item:nth-child(2),
-            .collage-item:nth-child(3),
-            .collage-item:nth-child(4) {
-                grid-column: 1 / 2;
-                grid-row: auto;
-            }
-
-            .hero-title {
-                font-size: 2.2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .slide img {
-                height: 350px;
-            }
-
-            .shade-name {
-                font-size: 1.5rem;
-            }
-
-            .cta-title {
-                font-size: 2rem;
+            
+            .featured-post .post-image {
+                height: 250px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
     <header class="header">
         <div class="container">
             <div class="logo-container">
                 <div class="site-title">Seemah Gloss</div>
             </div>
 
-            <!-- Navigation -->
             <nav class="nav">
                 <a href="home.html">Home</a>
                 <a href="products.html">Shop</a>
-                <a href style="background-color: var(--accent); color: var(--white);">Blog</a>
                 <a href="about.html">About</a>
+                <a href="images.html" class="active">Blog</a>
                 <a href="contact_page.html">Contact Us</a>
+                 <a href="enquiry.html">Enquiries</a>
             </nav>
 
-            <!-- Mobile Menu Toggle -->
             <div class="mobile-menu-toggle">
                 <span></span>
                 <span></span>
@@ -648,117 +417,248 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="gallery-hero">
-        <div class="hero-collage">
-            <div class="collage-item">
-                <img src="_images/lips1.webp" alt="Model lip loss application">
-            </div>
-            <div class="collage-item">
-                <img src="_images/lips2.webp" alt="Model lip gloss application">
-            </div>
-            <div class="collage-item">
-                <img src="_images/lips3.webp" alt="Model ip gloss application">
-            </div>
-            <div class="collage-item">
-                <img src="_images/lips4.webp" alt="Model lip gloss application">
-            </div>
-        </div>
-        <div class="hero-overlay">
-            <h1 class="hero-title">Gloss in Action</h1>
-            <p class="hero-subtitle">Real shine. Real people. Real moods.</p>
-            <a href="#" class="hero-cta">Tag us @SeemahGloss_Official</a>
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Beauty Blog</h1>
+            <p>Discover the latest beauty trends, expert tips, and cruelty-free beauty insights from Seemah Gloss</p>
         </div>
     </section>
 
-    <!-- Featured Looks Section -->
-    <section class="featured-looks">
+    <section class="blog-section">
         <div class="container">
-            <h2 class="section-title">Featured Looks</h2>
-            <div class="looks-slider">
-                <div class="slider-container">
-                    <!-- Slide 1 -->
-                    <div class="slide">
-                        <img src="_images/model_2.webp" alt="Model wearing Champagne Glow in natural daylight">
-                        <div class="slide-overlay">
-                            <div class="slide-info">
-                                <h3 class="shade-name">Champagne Glow</h3>
-                                <span class="finish-type">Sheer Finish</span>
-                                <p>Perfect for everyday wear with a subtle golden shimmer that catches the light beautifully.</p>
-                                <a href="products.html#champagne" class="shop-shade">Shop This Shade</a>
+            <div class="blog-container">
+                <article class="blog-post featured-post">
+                    <img src="_images/lipglosses.webp" 
+                         alt="The Ultimate Guide to Cruelty-Free Beauty" 
+                         class="post-image">
+                    <div class="featured-content">
+                        <span class="post-category">Beauty Guide</span>
+                        <h2 class="post-title">
+                            <a href="post.html">The Ultimate Guide to Building a Cruelty-Free Beauty Routine</a>
+                        </h2>
+                        <p class="post-excerpt">Learn how to transition to a completely cruelty-free beauty routine without compromising on quality or performance. Discover our favorite brands and must-have products.</p>
+                        <div class="post-meta">
+                            <div class="post-meta-item">
+                                <i class="far fa-user"></i>
+                                <span>Sarah Johnson</span>
+                            </div>
+                            <div class="post-meta-item">
+                                <i class="far fa-calendar"></i>
+                                <span>March 15, 2025</span>
+                            </div>
+                            <div class="post-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>8 min read</span>
+                            </div>
+                        </div>
+                        <a href="products.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <div class="blog-posts">
+                    <article class="blog-post">
+                        <img src="_images/lips1.webp" 
+                             alt="Lip Care Routine for All Seasons" 
+                             class="post-image">
+                        <div class="post-content">
+                            <span class="post-category">Lip Care</span>
+                            <h3 class="post-title">
+                                <a href="post.html">The Perfect Lip Care Routine for Every Season</a>
+                            </h3>
+                            <p class="post-excerpt">Discover how to adapt your lip care routine throughout the year to keep your lips soft, hydrated, and beautiful regardless of the weather.</p>
+                            <div class="post-meta">
+                                <div class="post-meta-item">
+                                    <i class="far fa-user"></i>
+                                    <span>Maya Patel</span>
+                                </div>
+                                <div class="post-meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    <span>March 12, 2025</span>
+                                </div>
+                                <div class="post-meta-item">
+                                    <i class="far fa-clock"></i>
+                                    <span>5 min read</span>
+                                </div>
+                            </div>
+                            <a href="post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-post">
+                        <img src="_images/model_2.webp" 
+                             alt="Sustainable Beauty Practices" 
+                             class="post-image">
+                        <div class="post-content">
+                            <span class="post-category">Sustainability</span>
+                            <h3 class="post-title">
+                                <a href="post.html">5 Sustainable Beauty Practices You Can Start Today</a>
+                            </h3>
+                            <p class="post-excerpt">Small changes can make a big difference. Learn simple yet effective ways to make your beauty routine more eco-friendly.</p>
+                            <div class="post-meta">
+                                <div class="post-meta-item">
+                                    <i class="far fa-user"></i>
+                                    <span>Amira Hassan</span>
+                                </div>
+                                <div class="post-meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    <span>March 8, 2025</span>
+                                </div>
+                                <div class="post-meta-item">
+                                    <i class="far fa-clock"></i>
+                                    <span>6 min read</span>
+                                </div>
+                            </div>
+                            <a href="products.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-post">
+                        <img src="_images/model_1.webp" 
+                             alt="Lipstick Shades for Every Skin Tone" 
+                             class="post-image">
+                        <div class="post-content">
+                            <span class="post-category">Makeup Tips</span>
+                            <h3 class="post-title">
+                                <a href="post.html">Finding Your Perfect Lipstick: A Guide for Every Skin Tone</a>
+                            </h3>
+                            <p class="post-excerpt">Not sure which lipstick shades will complement your skin tone? Our comprehensive guide helps you find your perfect match.</p>
+                            <div class="post-meta">
+                                <div class="post-meta-item">
+                                    <i class="far fa-user"></i>
+                                    <span>David Chen</span>
+                                </div>
+                                <div class="post-meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    <span>March 5, 2025</span>
+                                </div>
+                                <div class="post-meta-item">
+                                    <i class="far fa-clock"></i>
+                                    <span>7 min read</span>
+                                </div>
+                            </div>
+                            <a href="products.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <aside class="blog-sidebar">
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">About Our Blog</h3>
+                        <p style="line-height: 1.6; color: var(--muted);">Welcome to the Seemah Gloss beauty blog! Here we share expert tips, industry insights, and behind-the-scenes stories about cruelty-free beauty.</p>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Categories</h3>
+                        <ul class="categories-list">
+                            <li>
+                                <a href="#">
+                                    <span>Lip Care</span>
+                                    <span class="category-count">12</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>Makeup Tips</span>
+                                    <span class="category-count">8</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>Sustainability</span>
+                                    <span class="category-count">6</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>Beauty Guide</span>
+                                    <span class="category-count">10</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>Brand Story</span>
+                                    <span class="category-count">4</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Recent Posts</h3>
+                        <div class="recent-posts">
+                            <div class="recent-post">
+                                <img src="_images/lips3.webp" 
+                                     alt="Winter Lip Care" 
+                                     class="recent-post-image">
+                                <div class="recent-post-content">
+                                    <h4><a href="#">Winter Lip Care: How to Protect Your Lips from Cold Weather</a></h4>
+                                    <div class="recent-post-date">February 20, 2025</div>
+                                </div>
+                            </div>
+                            <div class="recent-post">
+                                <img src="_images/model_3.webp" 
+                                     alt="Vegan Beauty Myths" 
+                                     class="recent-post-image">
+                                <div class="recent-post-content">
+                                    <h4><a href="#">Debunking 5 Common Myths About Vegan Beauty Products</a></h4>
+                                    <div class="recent-post-date">February 15, 2025</div>
+                                </div>
+                            </div>
+                            <div class="recent-post">
+                                <img src="_images/bts_pic2.webp" 
+                                     alt="Lip Liner Techniques" 
+                                     class="recent-post-image">
+                                <div class="recent-post-content">
+                                    <h4><a href="#">Mastering Lip Liner: Techniques for Perfect Definition</a></h4>
+                                    <div class="recent-post-date">February 10, 2025</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Slide 2 -->
-                    <div class="slide">
-                        <img src="_images/model_3.webp" alt="Close-up of Berry Bliss on model with bold makeup">
-                        <div class="slide-overlay">
-                            <div class="slide-info">
-                                <h3 class="shade-name">Berry Bliss</h3>
-                                <span class="finish-type">Bold Finish</span>
-                                <p>A vibrant berry that makes a statement while keeping lips hydrated and comfortable.</p>
-                                <a href="products.html#berry" class="shop-shade">Shop This Shade</a>
-                            </div>
+
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Popular Tags</h3>
+                        <div class="tags-cloud">
+                            <a href="#" class="tag">Lip Gloss</a>
+                            <a href="#" class="tag">Cruelty-Free</a>
+                            <a href="#" class="tag">Vegan</a>
+                            <a href="#" class="tag">Sustainability</a>
+                            <a href="#" class="tag">Lip Care</a>
+                            <a href="#" class="tag">Beauty Tips</a>
+                            <a href="#" class="tag">Makeup</a>
                         </div>
                     </div>
-                
-                <div class="slider-nav">
-                    <div class="slider-dot active" data-slide="0"></div>
-                    <div class="slider-dot" data-slide="1"></div>
-                    <div class="slider-dot" data-slide="2"></div>
-                </div>
+
+                    <div class="sidebar-widget newsletter-widget">
+                        <h3 class="widget-title">Stay Updated</h3>
+                        <p style="margin-bottom: var(--spacing-md); opacity: 0.9;">Get the latest beauty tips and exclusive offers delivered to your inbox.</p>
+                        <form class="sidebar-newsletter">
+                            <input type="email" 
+                                   placeholder="Your email address" 
+                                   class="newsletter-input"
+                                   required>
+                            <button type="submit" class="btn-newsletter">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="blog-pagination">
+                <a href="#" class="pagination-link disabled">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                <a href="#" class="pagination-link active">1</a>
+                <a href="#" class="pagination-link">2</a>
+                <a href="#" class="pagination-link">3</a>
+                <a href="#" class="pagination-link">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Behind the Scenes -->
-    <section class="behind-scenes">
-        <div class="container">
-            <h2 class="section-title">Behind the Scenes</h2>
-            <p style="text-align: center; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">Where the magic happens - from product development to photoshoots</p>
-            <div class="bts-grid">
-                <div class="bts-card">
-                    <div class="bts-image">
-                        <img src="_images/bts_pic3.jpg" alt="Our team mixing gloss formulations in the lab">
-                    </div>
-                    <div class="bts-caption">
-                        <h3>Product Promotion</h3>
-                        <p>Founder, Seemah on a press tour</p>
-                    </div>
-                </div>
-                <div class="bts-card">
-                    <div class="bts-image">
-                        <img src="_images/bts_pic1.webp" alt="Photoshoot setup with models and lighting">
-                    </div>
-                    <div class="bts-caption">
-                        <h3>Photoshoots</h3>
-                        <p>Capturing the perfect shot to showcase our glosses</p>
-                    </div>
-                </div>
-                <div class="bts-card">
-                    <div class="bts-image">
-                        <img src="_images/bts_pic2.webp" alt="Product packaging and quality control process">
-                    </div>
-                    <div class="bts-caption">
-                        <h3>Packaging</h3>
-                        <p>Eco-friendly packaging that reflects our brand values</p>
-                    </div>
-                </div>
-    </section>
-
-    <!-- CTA Banner -->
-    <section class="cta-banner">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Ready to glow like this?</h2>
-                <p class="cta-subtitle">Discover your perfect shade and join our community of gloss lovers</p>
-                <a href="products.html" class="cta-button">Find Your Shade</a>
-                <div class="social-tag">Tag us @SeemahGloss_Official</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -766,21 +666,36 @@
                     <div class="logo-container">
                         <div class="site-title">Seemah Gloss</div>
                     </div>
-                    <p class="footer-tagline">Where Shine Meets Power</p>
-                </div>
-                    
-                    <div class="footer-column">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://instagram.com">Instagram</a></li>
-                            <li><a href="https://tiktok.com">TikTok</a></li>
-                            <li><a href="https://pinterest.com">Pinterest</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                        </ul>
+                    <p class="footer-tagline">Where Shine Meets Power - Premium cruelty-free beauty products for the modern woman.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/seemahgloss" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/seemahgloss" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://tiktok.com/@seemahgloss" class="social-link">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://pinterest.com/seemahgloss" class="social-link">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
                     </div>
                 </div>
-            </div>
+               
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="products.html">Shop all Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="images.html">Beauty Blog</a></li>
+                        <li><a href="contact_page.html">Contact Us</a></li>
+                         <li><a href="enquiry.html">Enquiries</a></li>
+                    </ul>
+                </div>
             
+           
             <div class="footer-bottom">
                 <p>&copy; 2025 Seemah Gloss. All rights reserved.</p>
             </div>
@@ -788,47 +703,37 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
             const nav = document.querySelector('.nav');
-            
+           
             if (mobileMenuToggle) {
                 mobileMenuToggle.addEventListener('click', function() {
                     nav.classList.toggle('active');
                 });
             }
 
-            // Image slider functionality
-            const sliderContainer = document.querySelector('.slider-container');
-            const slides = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.slider-dot');
-            let currentSlide = 0;
-            const slideCount = slides.length;
-
-            // Initialize slider
-            function goToSlide(slideIndex) {
-                sliderContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
-                
-                // Update dots
-                dots.forEach(dot => dot.classList.remove('active'));
-                dots[slideIndex].classList.add('active');
-                
-                currentSlide = slideIndex;
-            }
-
-            // Add click events to dots
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    goToSlide(index);
+            const newsletterForms = document.querySelectorAll('.sidebar-newsletter');
+            newsletterForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    alert(`Thank you for subscribing with ${email}! You'll receive our beauty updates soon.`);
+                    this.reset();
                 });
             });
 
-            // Auto-advance slides
-            setInterval(() => {
-                let nextSlide = (currentSlide + 1) % slideCount;
-                goToSlide(nextSlide);
-            }, 5000);
+            const blogPosts = document.querySelectorAll('.blog-post');
+            blogPosts.forEach((post, index) => {
+                post.style.opacity = '0';
+                post.style.transform = 'translateY(20px)';
+                post.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                
+                setTimeout(() => {
+                    post.style.opacity = '1';
+                    post.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
         });
     </script>
 </body>

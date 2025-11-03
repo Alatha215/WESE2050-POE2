@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry - Seemah Gloss | Product & Partnership Inquiries</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Enquiry page specific styles */
+        .enquiry-section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .enquiry-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .enquiry-form {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-row {
+            grid-column: 1 / -1;
+        }
+
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            margin: var(--spacing-sm) 0;
+        }
+
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .radio-option:hover, .checkbox-option:hover {
+            background-color: var(--light);
+        }
+
+        .radio-option input[type="radio"],
+        .checkbox-option input[type="checkbox"] {
+            margin: 0;
+        }
+
+        .character-count {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        .file-upload {
+            border: 2px dashed #e0e0e0;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary);
+            background-color: var(--light);
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .file-upload-label {
+            display: block;
+            cursor: pointer;
+        }
+
+        .file-preview {
+            margin-top: var(--spacing-sm);
+            display: none;
+            text-align: center;
+        }
+
+        .file-preview img {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: var(--border-radius);
+        }
+
+        .form-submit-container {
+            text-align: center;
+            margin-top: var(--spacing-lg);
+        }
+
+        .dynamic-fields {
+            margin: var(--spacing-md) 0;
+            padding: var(--spacing-md);
+            background: var(--light);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary);
+        }
+
+        .services-section {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .service-card {
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .process-section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .process-step {
+            text-align: center;
+            padding: var(--spacing-md);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto var(--spacing-sm);
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .enquiry-form {
+                padding: var(--spacing-md);
+                margin: 0 var(--spacing-sm);
+            }
+            
+            .services-grid,
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="site-title">Seemah Gloss</div>
+            </div>
+
+            <nav class="nav">
+                <a href="home.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="about.html">About</a>
+                <a href="images.html">Blog</a>
+                <a href="contact_page.html">Contact Us</a>
+                <a href="enquiry.html" class="active">Enquiries</a>
+            </nav>
+
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Make an Enquiry</h1>
+            <p class="page-subtitle">Interested in our products, services, or partnership opportunities? Let us know how we can help!</p>
+        </div>
+    </section>
+
+    <section class="enquiry-section">
+        <div class="container">
+            <div class="enquiry-header">
+                <h2>Get in Touch</h2>
+                <p>Fill out the form below and our team will get back to you within 24 hours</p>
+            </div>
+
+            <form id="enquiry-form" class="enquiry-form" novalidate>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="enquiry-name" class="form-label">Full Name *</label>
+                        <input type="text" 
+                               id="enquiry-name" 
+                               name="name"
+                               class="form-input" 
+                               placeholder="Your full name"
+                               required
+                               minlength="2"
+                               maxlength="50">
+                        <div class="error-message" id="enquiry-name-error">
+                            Please enter your full name (2-50 characters)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="enquiry-email" class="form-label">Email Address *</label>
+                        <input type="email" 
+                               id="enquiry-email" 
+                               name="email"
+                               class="form-input" 
+                               placeholder="your.email@example.com"
+                               required>
+                        <div class="error-message" id="enquiry-email-error">
+                            Please enter a valid email address
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="enquiry-phone" class="form-label">Phone Number *</label>
+                        <input type="tel" 
+                               id="enquiry-phone" 
+                               name="phone"
+                               class="form-input" 
+                               placeholder="+27 11 123 4567"
+                               required
+                               pattern="[\+\d\s\-\(\)]{10,}">
+                        <div class="error-message" id="enquiry-phone-error">
+                            Please enter a valid phone number
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="enquiry-company" class="form-label">Company/Organization</label>
+                        <input type="text" 
+                               id="enquiry-company" 
+                               name="company"
+                               class="form-input" 
+                               placeholder="Your company name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Enquiry Type *</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" 
+                                   id="enquiry-product" 
+                                   name="enquiryType" 
+                                   value="product" 
+                                   required>
+                            <label for="enquiry-product">Product Information & Pricing</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" 
+                                   id="enquiry-wholesale" 
+                                   name="enquiryType" 
+                                   value="wholesale">
+                            <label for="enquiry-wholesale">Wholesale/Bulk Orders</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" 
+                                   id="enquiry-partnership" 
+                                   name="enquiryType" 
+                                   value="partnership">
+                            <label for="enquiry-partnership">Partnership Opportunities</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" 
+                                   id="enquiry-volunteer" 
+                                   name="enquiryType" 
+                                   value="volunteer">
+                            <label for="enquiry-volunteer">Volunteer Opportunities</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" 
+                                   id="enquiry-sponsor" 
+                                   name="enquiryType" 
+                                   value="sponsor">
+                            <label for="enquiry-sponsor">Sponsorship</label>
+                        </div>
+                    </div>
+                    <div class="error-message" id="enquiry-type-error">
+                        Please select an enquiry type
+                    </div>
+                </div>
+
+                
+                <div id="dynamic-fields">
+                </div>
+
+                <div class="form-group">
+                    <label for="enquiry-message" class="form-label">Additional Details *</label>
+                    <textarea id="enquiry-message" 
+                              name="message"
+                              class="form-textarea" 
+                              placeholder="Please provide specific details about your enquiry..."
+                              required
+                              minlength="20"
+                              maxlength="500"
+                              rows="5"></textarea>
+                    <div class="character-count">
+                        <span id="enquiry-message-count">0</span>/500 characters
+                    </div>
+                    <div class="error-message" id="enquiry-message-error">
+                        Please provide more details (20-500 characters)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Preferred Contact Method *</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" 
+                                   id="contact-email" 
+                                   name="contactMethod" 
+                                   value="email" 
+                                   required checked>
+                            <label for="contact-email">Email</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" 
+                                   id="contact-phone" 
+                                   name="contactMethod" 
+                                   value="phone">
+                            <label for="contact-phone">Phone Call</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" 
+                                   id="contact-both" 
+                                   name="contactMethod" 
+                                   value="both">
+                            <label for="contact-both">Both</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="enquiry-budget" class="form-label">Budget Range (if applicable)</label>
+                    <select id="enquiry-budget" name="budget" class="form-select">
+                        <option value="" selected>Select budget range</option>
+                        <option value="under-500">Under R500</option>
+                        <option value="500-1000">R500 - R1,000</option>
+                        <option value="1000-5000">R1,000 - R5,000</option>
+                        <option value="5000-10000">R5,000 - R10,000</option>
+                        <option value="over-10000">Over R10,000</option>
+                        <option value="quote">Please provide quote</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="enquiry-deadline" class="form-label">Required By Date</label>
+                    <input type="date" 
+                           id="enquiry-deadline" 
+                           name="deadline"
+                           class="form-input"
+                           min="">
+                </div>
+
+                <div class="form-group">
+                    <div class="file-upload" id="file-upload-area">
+                        <input type="file" 
+                               id="enquiry-attachment" 
+                               name="attachment"
+                               accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                        <label for="enquiry-attachment" class="file-upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Upload supporting documents (optional)</span>
+                            <small>Max file size: 5MB. Supported formats: PDF, DOC, JPG, PNG</small>
+                        </label>
+                    </div>
+                    <div class="file-preview" id="file-preview"></div>
+                </div>
+
+                <div class="form-submit-container">
+                    <button type="submit" class="form-submit" id="enquiry-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Enquiry
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+  
+    <section class="services-section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: var(--spacing-lg);">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Retail Partnerships</h3>
+                    <p>Stock Seemah Gloss products in your store. We offer competitive wholesale pricing and marketing support.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Bulk Orders</h3>
+                    <p>Special pricing for corporate gifts, events, and large quantity orders. Custom packaging available.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Collaborations</h3>
+                    <p>Partner with us for brand collaborations, influencer partnerships, and co-branded product development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="process-section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: var(--spacing-lg);">Our Process</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Submit Enquiry</h3>
+                    <p>Fill out our enquiry form with your specific requirements and contact details.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Initial Response</h3>
+                    <p>We'll contact you within 24 hours to discuss your enquiry in more detail.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Custom Quote</h3>
+                    <p>Receive a tailored quote and proposal based on your specific needs.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Partnership</h3>
+                    <p>Once approved, we'll handle all the details to make our partnership successful.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-container">
+                <h2>Enquiry FAQs</h2>
+               
+                <div class="accordion-item">
+                    <div class="accordion-header">What information do I need for a wholesale enquiry?</div>
+                    <div class="accordion-content">
+                        <p>For wholesale enquiries, please provide your business registration details, estimated monthly order volume, and information about your retail space or online store. This helps us create the best proposal for your business.</p>
+                    </div>
+                </div>
+               
+                <div class="accordion-item">
+                    <div class="accordion-header">What are your minimum order quantities?</div>
+                    <div class="accordion-content">
+                        <p>Our minimum order quantity for wholesale is R2,500. For bulk orders and corporate gifts, we can accommodate smaller quantities starting from R1,000. Custom orders may have different requirements.</p>
+                    </div>
+                </div>
+               
+                <div class="accordion-item">
+                    <div class="accordion-header">Do you offer custom product development?</div>
+                    <div class="accordion-content">
+                        <p>Yes! We specialize in custom product development for brands and corporate clients. Minimum quantities apply, and the process typically takes 4-6 weeks from concept to delivery.</p>
+                    </div>
+                </div>
+               
+                <div class="accordion-item">
+                    <div class="accordion-header">What support do you provide to retail partners?</div>
+                    <div class="accordion-content">
+                        <p>We provide comprehensive support including marketing materials, product training, display units, and co-marketing opportunities. Our team works closely with partners to ensure success.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-container">
+                        <div class="site-title">Seemah Gloss</div>
+                    </div>
+                    <p class="footer-tagline">Where Shine Meets Power</p>
+                </div>
+
+                 <nav class="nav">
+                <a href="home.html" class="active">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="about.html">About</a>
+                <a href="images.html">Blog</a>
+                <a href="contact_page.html">Contact Us</a>
+                <a href="enquiry.html">Enquiries</a>
+            </nav>
+               
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://instagram.com">Instagram</a></li>
+                        <li><a href="https://tiktok.com">TikTok</a></li>
+                        <li><a href="https://pinterest.com">Pinterest</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+           
+            <div class="footer-bottom">
+                <p>&copy; 2025 Seemah Gloss. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <div class="modal" id="success-modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3>Enquiry Submitted Successfully!</h3>
+            <p>Thank you for your interest in Seemah Gloss. We've received your enquiry and will get back to you within 24 hours.</p>
+            <button class="form-submit" style="margin-top: 1rem;" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+      
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('.nav');
+           
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                });
+            }
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const isActive = header.classList.contains('active');
+                   
+                    accordionHeaders.forEach(h => {
+                        h.classList.remove('active');
+                        h.nextElementSibling.classList.remove('active');
+                    });
+                   
+                    if (!isActive) {
+                        header.classList.add('active');
+                        content.classList.add('active');
+                    }
+                });
+            });
+
+            const deadlineInput = document.getElementById('enquiry-deadline');
+            if (deadlineInput) {
+                const today = new Date().toISOString().split('T')[0];
+                deadlineInput.min = today;
+            }
+
+            const messageTextarea = document.getElementById('enquiry-message');
+            const charCount = document.getElementById('enquiry-message-count');
+            
+            if (messageTextarea && charCount) {
+                messageTextarea.addEventListener('input', function() {
+                    charCount.textContent = this.value.length;
+                });
+            }
+
+            const fileInput = document.getElementById('enquiry-attachment');
+            const filePreview = document.getElementById('file-preview');
+            
+            if (fileInput && filePreview) {
+                fileInput.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        if (file.size > 5 * 1024 * 1024) {
+                            alert('File size must be less than 5MB');
+                            fileInput.value = '';
+                            return;
+                        }
+
+                        if (file.type.startsWith('image/')) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                filePreview.innerHTML = `
+                                    <img src="${e.target.result}" alt="Preview">
+                                    <p>${file.name}</p>
+                                `;
+                                filePreview.style.display = 'block';
+                            };
+                            reader.readAsDataURL(file);
+                        } else {
+                            filePreview.innerHTML = `
+                                <div style="text-align: center;">
+                                    <i class="fas fa-file" style="font-size: 3rem; color: var(--primary);"></i>
+                                    <p>${file.name}</p>
+                                </div>
+                            `;
+                            filePreview.style.display = 'block';
+                        }
+                    }
+                });
+            }
+
+            const enquiryTypeRadios = document.querySelectorAll('input[name="enquiryType"]');
+            const dynamicFields = document.getElementById('dynamic-fields');
+            
+            enquiryTypeRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    updateDynamicFields(this.value);
+                });
+            });
+
+            function updateDynamicFields(enquiryType) {
+                let html = '';
+                
+                switch (enquiryType) {
+                    case 'product':
+                        html = `
+                            <div class="dynamic-fields">
+                                <div class="form-group">
+                                    <label for="product-interest" class="form-label">Products of Interest *</label>
+                                    <select id="product-interest" name="productInterest" class="form-select" required>
+                                        <option value="" disabled selected>Select products</option>
+                                        <option value="lip-gloss">Lip Gloss Collection</option>
+                                        <option value="lipstick">Lipstick Range</option>
+                                        <option value="lip-care">Lip Care Products</option>
+                                        <option value="all">All Products</option>
+                                        <option value="custom">Custom Selection</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="quantity" class="form-label">Estimated Quantity</label>
+                                    <input type="number" 
+                                           id="quantity" 
+                                           name="quantity"
+                                           class="form-input" 
+                                           placeholder="e.g., 100"
+                                           min="1">
+                                </div>
+                            </div>
+                        `;
+                        break;
+
+                    case 'wholesale':
+                        html = `
+                            <div class="dynamic-fields">
+                                <div class="form-group">
+                                    <label for="business-type" class="form-label">Business Type *</label>
+                                    <select id="business-type" name="businessType" class="form-select" required>
+                                        <option value="" disabled selected>Select business type</option>
+                                        <option value="retail">Retail Store</option>
+                                        <option value="salon">Beauty Salon</option>
+                                        <option value="spa">Spa</option>
+                                        <option value="online">Online Store</option>
+                                        <option value="distributor">Distributor</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="monthly-volume" class="form-label">Estimated Monthly Volume</label>
+                                    <input type="text" 
+                                           id="monthly-volume" 
+                                           name="monthlyVolume"
+                                           class="form-input" 
+                                           placeholder="e.g., 500 units">
+                                </div>
+                            </div>
+                        `;
+                        break;
+
+                    case 'volunteer':
+                        html = `
+                            <div class="dynamic-fields">
+                                <div class="form-group">
+                                    <label for="volunteer-role" class="form-label">Area of Interest *</label>
+                                    <select id="volunteer-role" name="volunteerRole" class="form-select" required>
+                                        <option value="" disabled selected>Select area of interest</option>
+                                        <option value="events">Event Support</option>
+                                        <option value="community">Community Outreach</option>
+                                        <option value="admin">Administrative</option>
+                                        <option value="creative">Creative/Design</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="availability" class="form-label">Availability</label>
+                                    <input type="text" 
+                                           id="availability" 
+                                           name="availability"
+                                           class="form-input" 
+                                           placeholder="e.g., Weekends, Evenings">
+                                </div>
+                            </div>
+                        `;
+                        break;
+
+                    case 'sponsor':
+                        html = `
+                            <div class="dynamic-fields">
+                                <div class="form-group">
+                                    <label for="sponsorship-type" class="form-label">Sponsorship Type</label>
+                                    <select id="sponsorship-type" name="sponsorshipType" class="form-select">
+                                        <option value="" selected>Select type</option>
+                                        <option value="financial">Financial</option>
+                                        <option value="product">Product Donation</option>
+                                        <option value="event">Event Sponsorship</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                }
+
+                dynamicFields.innerHTML = html;
+            }
+
+            const enquiryForm = document.getElementById('enquiry-form');
+            const successModal = document.getElementById('success-modal');
+            const modalClose = document.querySelector('.modal-close');
+
+            enquiryForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                const requiredFields = enquiryForm.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = 'var(--error)';
+                    } else {
+                        field.style.borderColor = '';
+                    }
+                });
+
+                if (isValid) {
+                    successModal.classList.add('active');
+                    enquiryForm.reset();
+                    dynamicFields.innerHTML = '';
+                    if (charCount) charCount.textContent = '0';
+                    if (filePreview) filePreview.style.display = 'none';
+                } else {
+                    alert('Please fill in all required fields');
+                }
+            });
+
+            modalClose.addEventListener('click', closeModal);
+
+            function closeModal() {
+                successModal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
